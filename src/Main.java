@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.InputMismatchException;
 import java.util.Random;
 
 
@@ -6,9 +7,9 @@ class RandomNumberGuesser{
     public static void main(String[] args) {
         
         Scanner reader = new Scanner(System.in);
-        String game = "running";
+        String game = "yes";
 
-        while(game.equals("running"))
+        while(game.equals("yes") || game.equals("y"))
         {
             int lowest_number = 1;
             int highest_number = 1000;
@@ -23,7 +24,18 @@ class RandomNumberGuesser{
                 int attempts_left = max_attempts - attempts;
                 System.out.println("\nYou have " + attempts_left + " attempts left.");
                 System.out.print("Guess a number between " + lowest_number + " and " + highest_number + " : ");
-                guess = reader.nextInt();
+                
+                try
+                {
+                    guess = reader.nextInt();
+                    reader.nextLine();
+                }
+                catch (InputMismatchException e)
+                {
+                    System.out.println("You can only input a number.");
+                    reader.nextLine();
+                    continue;
+                }
                 attempts++;
 
                 if(guess == randNum)
@@ -45,6 +57,8 @@ class RandomNumberGuesser{
                 }
             }
         }
+
         reader.close();
+
     }
 }
