@@ -56,7 +56,7 @@ class RandomNumberGuesser{
                     }
                     else if(guess > randNum)
                     {
-                        System.out.print("You guessed to high.");
+                        System.out.print("\nYou guessed to high.");
                         if(attempts < max_attempts)
                         {
                             System.out.println(" Try again.");
@@ -71,7 +71,7 @@ class RandomNumberGuesser{
                     }
                     else
                     {
-                        System.out.print("You guessed to low. ");
+                        System.out.print("\nYou guessed to low. ");
                         if(attempts < max_attempts)
                         {
                             System.out.println(" Try again.");
