@@ -4,7 +4,8 @@ import java.util.Random;
 
 
 class RandomNumberGuesser{
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         
         Scanner reader = new Scanner(System.in);
         String game = "yes";
@@ -14,7 +15,7 @@ class RandomNumberGuesser{
             int lowest_number = 1;
             int highest_number = 1000;
             Random rand = new Random();
-            int randNum = rand.nextInt(1000);
+            int randNum = rand.nextInt(highest_number - lowest_number + 1) + lowest_number;
             int guess = -1;
             int attempts = 0;
             int max_attempts = 10;
@@ -22,7 +23,7 @@ class RandomNumberGuesser{
             while(guess != randNum && attempts != max_attempts)
             {
                 int attempts_left = max_attempts - attempts;
-                System.out.println("\nYou have " + attempts_left + " attempts left.");
+                System.out.println("You have " + attempts_left + " attempts left.");
                 System.out.print("Guess a number between " + lowest_number + " and " + highest_number + " : ");
                 
                 try
@@ -36,24 +37,53 @@ class RandomNumberGuesser{
                     reader.nextLine();
                     continue;
                 }
-                attempts++;
 
-                if(guess == randNum)
+                if(guess < lowest_number || guess > highest_number)
                 {
-                    System.out.println("Congraulations! You Win!");
-                    System.out.println("It took you " + attempts + " attempts to win the game.");
-                    System.out.print("Would you like to play again? Yes or No: ");
-                    game = reader.next().toLowerCase();
-                }
-                else if(guess > randNum)
-                {
-                    System.out.println("You guessed to high, try again.");
-                    highest_number = guess;
+                    System.out.println("\nYou can only guess between " + lowest_number + " and " + highest_number + ".");
+                    continue;
                 }
                 else
                 {
-                    System.out.println("You guessed to low, try again.");
-                    lowest_number = guess;
+                    attempts++;
+
+                    if(guess == randNum)
+                    {
+                        System.out.println("\nCongratulations! You Win!");
+                        System.out.println("It took you " + attempts + " attempts to win the game.");
+                        System.out.print("\nWould you like to play again? Yes or No: ");
+                        game = reader.next().toLowerCase();
+                    }
+                    else if(guess > randNum)
+                    {
+                        System.out.print("You guessed to high.");
+                        if(attempts < max_attempts)
+                        {
+                            System.out.println(" Try again.");
+                            highest_number = guess;
+                        }
+                        else
+                        {
+                            System.out.println("\nYou lost!");
+                            System.out.print("\nWould you like to play again? Yes or No: ");
+                            game = reader.next().toLowerCase();
+                        }
+                    }
+                    else
+                    {
+                        System.out.print("You guessed to low. ");
+                        if(attempts < max_attempts)
+                        {
+                            System.out.println(" Try again.");
+                            lowest_number = guess;
+                        }
+                        else
+                        {
+                            System.out.println("\nYou lost!");
+                            System.out.print("\nWould you like to play again? Yes or No: ");
+                            game = reader.next().toLowerCase();
+                        }
+                    }
                 }
             }
         }
