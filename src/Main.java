@@ -10,14 +10,19 @@ class RandomNumberGuesser{
 
         while(game.equals("running"))
         {
+            int lowest_number = 1;
+            int highest_number = 1000;
             Random rand = new Random();
-            int randNum = rand.nextInt(10);
+            int randNum = rand.nextInt(1000);
             int guess = -1;
             int attempts = 0;
+            int max_attempts = 10;
 
-            while(guess != randNum)
+            while(guess != randNum && attempts != max_attempts)
             {
-                System.out.print("Guess a number between 1 and 1000: ");
+                int attempts_left = max_attempts - attempts;
+                System.out.println("\nYou have " + attempts_left + " attempts left.");
+                System.out.print("Guess a number between " + lowest_number + " and " + highest_number + " : ");
                 guess = reader.nextInt();
                 attempts++;
 
@@ -31,10 +36,12 @@ class RandomNumberGuesser{
                 else if(guess > randNum)
                 {
                     System.out.println("You guessed to high, try again.");
+                    highest_number = guess;
                 }
                 else
                 {
                     System.out.println("You guessed to low, try again.");
+                    lowest_number = guess;
                 }
             }
         }
