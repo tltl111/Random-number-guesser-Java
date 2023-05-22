@@ -26,8 +26,7 @@ class RandomNumberGuesser {
                 try {
                     guess = input.nextInt();
                     input.nextLine();
-                }
-                catch (InputMismatchException e) {
+                } catch (InputMismatchException e) {
                     System.out.println("You can only input a number.");
                     input.nextLine();
                     continue;
@@ -36,8 +35,7 @@ class RandomNumberGuesser {
                 if(guess < lowest_number || guess > highest_number) {
                     System.out.println("\nYou can only guess between " + lowest_number + " and " + highest_number + ".");
                     continue;
-                }
-                else {
+                } else {
                     attempts++;
 
                     if(guess == randNum) {
@@ -45,27 +43,23 @@ class RandomNumberGuesser {
                         System.out.println("It took you " + attempts + " attempts to win the game.");
                         System.out.print("\nWould you like to play again? Yes or No: ");
                         game = input.next().toLowerCase();
-                    }
-                    else if(guess > randNum) {
+                    } else if(guess > randNum) {
                         System.out.print("\nYou guessed to high.");
                         if(attempts < max_attempts) {
                             System.out.println(" Try again.");
                             highest_number = guess;
-                        }
-                        else {
+                        } else {
                             System.out.println("\nYou lost!");
                             System.out.println("The correct number was " + randNum);
                             System.out.print("\nWould you like to play again? Yes or No: ");
                             game = input.next().toLowerCase();
                         }
-                    }
-                    else {
+                    } else {
                         System.out.print("\nYou guessed to low. ");
                         if(attempts < max_attempts) {
                             System.out.println(" Try again.");
                             lowest_number = guess;
-                        }
-                        else {
+                        } else {
                             System.out.println("\nYou lost!");
                             System.out.println("The correct number was " + randNum);
                             System.out.print("\nWould you like to play again? Yes or No: ");
