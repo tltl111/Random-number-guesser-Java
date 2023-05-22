@@ -65,6 +65,7 @@ class RandomNumberGuesser{
                         else
                         {
                             System.out.println("\nYou lost!");
+                            System.out.println("The correct number was " + randNum);
                             System.out.print("\nWould you like to play again? Yes or No: ");
                             game = reader.next().toLowerCase();
                         }
@@ -80,6 +81,7 @@ class RandomNumberGuesser{
                         else
                         {
                             System.out.println("\nYou lost!");
+                            System.out.println("The correct number was " + randNum);
                             System.out.print("\nWould you like to play again? Yes or No: ");
                             game = reader.next().toLowerCase();
                         }
