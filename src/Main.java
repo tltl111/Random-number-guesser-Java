@@ -6,8 +6,8 @@ import java.util.Random;
 class RandomNumberGuesser{
     public static void main(String[] args)
     {
-        
-        Scanner reader = new Scanner(System.in);
+
+        Scanner input = new Scanner(System.in);
         String game = "yes";
 
         while(game.equals("yes") || game.equals("y"))
@@ -25,16 +25,16 @@ class RandomNumberGuesser{
                 int attempts_left = max_attempts - attempts;
                 System.out.println("You have " + attempts_left + " attempts left.");
                 System.out.print("Guess a number between " + lowest_number + " and " + highest_number + " : ");
-                
+
                 try
                 {
-                    guess = reader.nextInt();
-                    reader.nextLine();
+                    guess = input.nextInt();
+                    input.nextLine();
                 }
                 catch (InputMismatchException e)
                 {
                     System.out.println("You can only input a number.");
-                    reader.nextLine();
+                    input.nextLine();
                     continue;
                 }
 
@@ -52,7 +52,7 @@ class RandomNumberGuesser{
                         System.out.println("\nCongratulations! You Win!");
                         System.out.println("It took you " + attempts + " attempts to win the game.");
                         System.out.print("\nWould you like to play again? Yes or No: ");
-                        game = reader.next().toLowerCase();
+                        game = input.next().toLowerCase();
                     }
                     else if(guess > randNum)
                     {
@@ -67,7 +67,7 @@ class RandomNumberGuesser{
                             System.out.println("\nYou lost!");
                             System.out.println("The correct number was " + randNum);
                             System.out.print("\nWould you like to play again? Yes or No: ");
-                            game = reader.next().toLowerCase();
+                            game = input.next().toLowerCase();
                         }
                     }
                     else
@@ -83,14 +83,14 @@ class RandomNumberGuesser{
                             System.out.println("\nYou lost!");
                             System.out.println("The correct number was " + randNum);
                             System.out.print("\nWould you like to play again? Yes or No: ");
-                            game = reader.next().toLowerCase();
+                            game = input.next().toLowerCase();
                         }
                     }
                 }
             }
         }
 
-        reader.close();
+        input.close();
 
     }
 }
